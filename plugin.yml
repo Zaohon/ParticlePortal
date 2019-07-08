@@ -1,0 +1,11 @@
+api-version: 1.13
+name: ParticlePortal
+version: 0.1
+author: Zao_hon
+main: cn.blockmc.Zao_hon.ParticlePortal
+commands:
+    ParticlePortal:
+      aliases: [pp]
+permissions:
+    ParticlePortal.Admin:
+        default:op
