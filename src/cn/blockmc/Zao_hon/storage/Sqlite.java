@@ -90,6 +90,17 @@ public class Sqlite {
 			e.printStackTrace();
 		}
 	}
+	public void removePortal(String name){
+		Connection conn = setupConnection();
+		PreparedStatement ps = setupPreparedStatement(conn, PreparedStatementType.DELETE_PORTAL);
+		try {
+			ps.setString(1, name);
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	public HashMap<String,Portal> selectPortals() {
 		HashMap<String,Portal> portals = new HashMap<String,Portal>();
@@ -112,4 +123,5 @@ public class Sqlite {
 		}
 		return portals;
 	}
+
 }

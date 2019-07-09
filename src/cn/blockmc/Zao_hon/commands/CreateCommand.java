@@ -63,7 +63,7 @@ public class CreateCommand implements ICommand {
 			boolean creating = pcmanager.containCache(player.getUniqueId());
 			if (creating) {
 				player.sendMessage("你已经在创建传送门了");
-			} else if (plugin.getPortalManagerr().isExist(portalname)) {
+			} else if (plugin.getPortalManager().isExist(portalname)) {
 				player.sendMessage("传送门已存在");
 			} else {
 				pcmanager.addCache(player.getUniqueId(), portalname);

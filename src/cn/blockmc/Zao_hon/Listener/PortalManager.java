@@ -25,6 +25,7 @@ public class PortalManager {
 
 	public void removePortal(String name) {
 		portals.remove(name).destroy();
+		plugin.getSqlite().removePortal(name);
 	}
 
 	public boolean isExist(String name) {

@@ -1,5 +1,7 @@
 package cn.blockmc.Zao_hon.Listener;
 
+import java.util.HashSet;
+
 import org.bukkit.Location;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -12,8 +14,7 @@ public class Portal {
 	private final String name;
 	private final Location[] locs;
 	private PortalListener listener;
-	private ParticleGenerator particlegenerator;
-	private BukkitTask task;
+	private HashSet<BukkitTask> tasks;
 
 	public Portal(String name, Location[] locs) {
 		this.plugin = ParticlePortal.getInstance();
@@ -22,8 +23,13 @@ public class Portal {
 		listener = new PortalListener(this);
 		plugin.getServer().getPluginManager().registerEvents(listener, plugin);
 
-		particlegenerator = new ParticleGenerator(locs[0]);
-		BukkitTask task = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin, particlegenerator, 0, (long) 1);
+		tasks = new HashSet<BukkitTask>(2);
+		BukkitTask task1 = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
+				new ParticleGenerator(locs[0]), 10, 1);
+		BukkitTask task2 = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
+				new ParticleGenerator(locs[1]), 10, 1);
+		tasks.add(task1);
+		tasks.add(task2);
 
 	}
 
@@ -37,6 +43,8 @@ public class Portal {
 
 	public void destroy() {
 		HandlerList.unregisterAll(listener);
-		task.cancel();
+		tasks.forEach(task -> {
+			task.cancel();
+		});
 	}
 }

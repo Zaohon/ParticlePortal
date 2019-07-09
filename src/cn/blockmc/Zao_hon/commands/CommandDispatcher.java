@@ -66,7 +66,7 @@ public class CommandDispatcher implements CommandExecutor, TabCompleter {
 			displayUsage(sender, label, subCommand);
 			return true;
 		}
-		
+
 		// Check that the sender is correct
 		if (!com.canBeConsole()
 				&& (sender instanceof ConsoleCommandSender || sender instanceof RemoteConsoleCommandSender)) {

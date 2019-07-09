@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.bukkit.command.CommandSender;
 
-public class ListCommand  implements ICommand{
+public class ListCommand implements ICommand {
 
 	@Override
 	public String getName() {
@@ -23,7 +23,7 @@ public class ListCommand  implements ICommand{
 
 	@Override
 	public String[] getUsageString(String label, CommandSender sender) {
-		return new String[]{"显示所有的传送门"};
+		return new String[] { "显示所有的传送门" };
 	}
 
 	@Override

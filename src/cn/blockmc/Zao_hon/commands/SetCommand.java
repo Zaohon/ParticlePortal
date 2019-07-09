@@ -36,7 +36,7 @@ public class SetCommand implements ICommand {
 
 	@Override
 	public String[] getUsageString(String label, CommandSender sender) {
-		return new String[]{"yeah"};
+		return new String[] { "§bset §8--设置粒子传送门的坐标点" };
 	}
 
 	@Override
@@ -68,13 +68,13 @@ public class SetCommand implements ICommand {
 			if (!pc.isFull()) {
 				player.sendMessage("第一个传送点设置完毕，再次输入/pp set设置第二个传送点");
 			} else {
-				PortalManager pmanager = plugin.getPortalManagerr();
+				PortalManager pmanager = plugin.getPortalManager();
 				if (pmanager.isExist(portalname)) {
 					player.sendMessage("创建失败！");
 					pcmanager.removeCache(player.getUniqueId());
 				} else {
 					pmanager.addNewPortal(portalname, new Portal(portalname, pc.getLocations()));
-					player.sendMessage(portalname+"传送门创建完成！已自动开启粒子特效");
+					player.sendMessage(portalname + "传送门创建完成！已自动开启粒子特效");
 					pcmanager.removeCache(player.getUniqueId());
 				}
 			}
