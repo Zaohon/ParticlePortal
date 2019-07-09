@@ -6,23 +6,41 @@ import cn.blockmc.Zao_hon.ParticlePortal;
 
 public class PortalManager {
 	private ParticlePortal plugin;
-	
-	private HashMap<String,Portal> portals;
+
+	private HashMap<String, Portal> portals;
 
 	public PortalManager() {
-		this.plugin = ParticlePortal.getInstance();
-		
-		portals = new HashMap<String,Portal>();
+		plugin = ParticlePortal.getInstance();
+		loadPortals();
 	}
-	public void addPortal(String name,Portal portal){
-		portals.put(name,portal);
+
+	public void addPortal(String name, Portal portal) {
+		portals.put(name, portal);
 	}
-	public void removePortal(String name){
+
+	public void addNewPortal(String name, Portal portal) {
+		addPortal(name, portal);
+		savePortal(portal);
+	}
+
+	public void removePortal(String name) {
 		portals.remove(name).destroy();
 	}
-	
-	public boolean isExist(String name){
+
+	public boolean isExist(String name) {
 		return portals.containsKey(name);
 	}
-	
+
+	public HashMap<String, Portal> getPortals() {
+		return portals;
+	}
+
+	public void loadPortals() {
+		portals = plugin.getSqlite().selectPortals();
+	}
+
+	public void savePortal(Portal portal) {
+		plugin.getSqlite().insertPortal(portal);
+	}
+
 }

@@ -8,4 +8,4 @@ commands:
       aliases: [pp]
 permissions:
     ParticlePortal.Admin:
-        default:op
+        default: op

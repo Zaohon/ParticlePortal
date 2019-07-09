@@ -36,7 +36,7 @@ public class SetCommand implements ICommand {
 
 	@Override
 	public String[] getUsageString(String label, CommandSender sender) {
-		return null;
+		return new String[]{"yeah"};
 	}
 
 	@Override
@@ -71,9 +71,11 @@ public class SetCommand implements ICommand {
 				PortalManager pmanager = plugin.getPortalManagerr();
 				if (pmanager.isExist(portalname)) {
 					player.sendMessage("创建失败！");
+					pcmanager.removeCache(player.getUniqueId());
 				} else {
-					pmanager.addPortal(portalname, new Portal(portalname, pc.getLocations()));
+					pmanager.addNewPortal(portalname, new Portal(portalname, pc.getLocations()));
 					player.sendMessage(portalname+"传送门创建完成！已自动开启粒子特效");
+					pcmanager.removeCache(player.getUniqueId());
 				}
 			}
 		}

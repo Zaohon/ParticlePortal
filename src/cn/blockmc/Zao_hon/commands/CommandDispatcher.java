@@ -61,6 +61,12 @@ public class CommandDispatcher implements CommandExecutor, TabCompleter {
 
 		ICommand com = isSubCommand(subCommand);
 
+		// Was not found
+		if (com == null) {
+			displayUsage(sender, label, subCommand);
+			return true;
+		}
+		
 		// Check that the sender is correct
 		if (!com.canBeConsole()
 				&& (sender instanceof ConsoleCommandSender || sender instanceof RemoteConsoleCommandSender)) {

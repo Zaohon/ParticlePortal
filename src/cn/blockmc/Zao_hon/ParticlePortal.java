@@ -5,7 +5,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import cn.blockmc.Zao_hon.Listener.PortalManager;
 import cn.blockmc.Zao_hon.commands.CommandDispatcher;
 import cn.blockmc.Zao_hon.commands.CreateCommand;
+import cn.blockmc.Zao_hon.commands.SetCommand;
 import cn.blockmc.Zao_hon.creator.PortalCacheManager;
+import cn.blockmc.Zao_hon.storage.Sqlite;
 
 public class ParticlePortal extends JavaPlugin {
 	private Sqlite sqlite;
@@ -23,6 +25,7 @@ public class ParticlePortal extends JavaPlugin {
 		getCommand("ParticlePortal").setExecutor(commanddispatcher);
 		getCommand("ParticlePortal").setTabCompleter(commanddispatcher);
 		commanddispatcher.registerCommand(new CreateCommand());
+		commanddispatcher.registerCommand(new SetCommand());
 		
 		portalcachemanager = new PortalCacheManager();
 		
