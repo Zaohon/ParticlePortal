@@ -25,11 +25,11 @@ public class Portal {
 
 		tasks = new HashSet<BukkitTask>(2);
 		BukkitTask task1 = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
-				new ParticleGenerator(locs[0]), 10, 1);
-		BukkitTask task2 = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
-				new ParticleGenerator(locs[1]), 10, 1);
+				new ParticleGenerator(locs[0]), 10, 2);
+//		BukkitTask task2 = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
+//				new ParticleGenerator(locs[1]), 10, 2);
 		tasks.add(task1);
-		tasks.add(task2);
+//		tasks.add(task2);
 
 	}
 

@@ -44,9 +44,19 @@ public class CommandDispatcher implements CommandExecutor, TabCompleter {
 	}
 
 	@Override
-	public List<String> onTabComplete(CommandSender arg0, Command arg1, String arg2, String[] arg3) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+		if (args.length == 0) {
+			return null;
+		}
+		String subCommand = args[0].toLowerCase();
+		String[] subArgs = (args.length > 1 ? Arrays.copyOfRange(args, 1, args.length) : new String[0]);
+		
+		ICommand com = isSubCommand(subCommand);
+		if (com == null) {
+			return null;
+		}
+		
+		return com.onTabComplete(sender, label, subArgs);
 	}
 
 	@Override

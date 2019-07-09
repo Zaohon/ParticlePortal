@@ -16,7 +16,7 @@ public class ParticleGenerator implements Runnable {
 	//
 	private static final double PI = Math.PI;
 	private static final Color COLOR = Color.fromRGB(0, 191, 255);
-	private static final Particle.DustOptions OPTION = new Particle.DustOptions(COLOR, 0.1f);
+	private static final Particle.DustOptions OPTION = new Particle.DustOptions(COLOR, 0.3f);
 	private static final float SCALE = 1.7f;
 	private double i = 0;
 

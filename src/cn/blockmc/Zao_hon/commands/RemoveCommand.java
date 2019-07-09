@@ -1,5 +1,6 @@
 package cn.blockmc.Zao_hon.commands;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.command.CommandSender;
@@ -31,7 +32,7 @@ public class RemoveCommand implements ICommand {
 
 	@Override
 	public String[] getUsageString(String label, CommandSender sender) {
-		return new String[] { "§bcreate §dname §8--删除一个粒子传送门" };
+		return new String[] { "§bremove §dname §8--删除一个粒子传送门" };
 	}
 
 	@Override
@@ -46,7 +47,6 @@ public class RemoveCommand implements ICommand {
 
 	@Override
 	public boolean canBeCommandBlock() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
@@ -60,14 +60,14 @@ public class RemoveCommand implements ICommand {
 			sender.sendMessage(name + "不存在");
 		} else {
 			pm.removePortal(name);
+			sender.sendMessage("已成功删除" + name + "传送门");
 		}
 		return true;
 	}
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, String label, String[] args) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<String>(plugin.getPortalManager().getPortals().keySet());
 	}
 
 }
