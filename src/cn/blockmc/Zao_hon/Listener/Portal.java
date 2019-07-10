@@ -28,11 +28,14 @@ public class Portal {
 		
 
 		particleTask = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
-				new ParticleGenerator(this), 10, 3);
+				new ParticleGenerator(this), 200, 5);
 		nearbyPlayers = new HashSet<Player>();
 		
 		NearbyPlayersFinder particleCloser = new NearbyPlayersFinder(this);
 		findTask = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,particleCloser, 0, 20);
+		
+		plugin.PR("f");
+		
 	}
 
 	public String getName() {

@@ -22,7 +22,7 @@ public class ParticleGenerator implements Runnable {
 //	private static final double PI8 = PI / 8;
 	private static final double PI180 = PI / 180;
 	private static final Color COLOR = Color.fromRGB(0, 191, 255);
-	private static final Particle.DustOptions OPTION = new Particle.DustOptions(COLOR, 0.2f);
+	private static final Particle.DustOptions OPTION = new Particle.DustOptions(COLOR, 0.25f);
 	private static final float SCALE = 1.7f;
 	private double i = 0;
 
@@ -78,7 +78,7 @@ public class ParticleGenerator implements Runnable {
 
 			for (Player player : portal.getNearbyPlayers()) {
 				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
-				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
+				player.spawnParticle(Particle.REDSTONE, xx2, yy2, zz2, 0, 0, 0, 0, 0, OPTION);
 			}
 			// world1.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0,
 			// 0, OPTION);
