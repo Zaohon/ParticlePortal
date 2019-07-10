@@ -1,10 +1,11 @@
 package cn.blockmc.Zao_hon.Listener;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitTask;
 
 import cn.blockmc.Zao_hon.ParticlePortal;
@@ -14,7 +15,9 @@ public class Portal {
 	private final String name;
 	private final Location[] locs;
 	private PortalListener listener;
-	private HashSet<BukkitTask> tasks;
+	private BukkitTask particleTask;
+	private BukkitTask findTask;
+	private Set<Player> nearbyPlayers;
 
 	public Portal(String name, Location[] locs) {
 		this.plugin = ParticlePortal.getInstance();
@@ -22,15 +25,14 @@ public class Portal {
 		this.locs = locs;
 		listener = new PortalListener(this);
 		plugin.getServer().getPluginManager().registerEvents(listener, plugin);
+		
 
-		tasks = new HashSet<BukkitTask>(2);
-		BukkitTask task1 = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
-				new ParticleGenerator(locs[0]), 10, 2);
-//		BukkitTask task2 = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
-//				new ParticleGenerator(locs[1]), 10, 2);
-		tasks.add(task1);
-//		tasks.add(task2);
-
+		particleTask = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
+				new ParticleGenerator(this), 10, 3);
+		nearbyPlayers = new HashSet<Player>();
+		
+		NearbyPlayersFinder particleCloser = new NearbyPlayersFinder(this);
+		findTask = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,particleCloser, 0, 20);
 	}
 
 	public String getName() {
@@ -40,11 +42,13 @@ public class Portal {
 	public Location[] getLocations() {
 		return locs;
 	}
+	public Set<Player> getNearbyPlayers(){
+		return nearbyPlayers;
+	}
 
 	public void destroy() {
 		HandlerList.unregisterAll(listener);
-		tasks.forEach(task -> {
-			task.cancel();
-		});
+		findTask.cancel();
+		particleTask.cancel();
 	}
 }

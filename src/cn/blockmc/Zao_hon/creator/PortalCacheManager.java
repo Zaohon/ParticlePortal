@@ -9,10 +9,9 @@ import org.bukkit.Location;
 import cn.blockmc.Zao_hon.ParticlePortal;
 
 public class PortalCacheManager {
-	private ParticlePortal plugin;
 	private HashMap<UUID,PortalCache> portalcaches;
 	public PortalCacheManager(){
-		plugin = ParticlePortal.getInstance();
+		ParticlePortal.getInstance();
 		 portalcaches = new HashMap<UUID,PortalCache>();
 	}
 	public boolean containCache(UUID uuid){
