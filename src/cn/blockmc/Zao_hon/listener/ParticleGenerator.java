@@ -1,5 +1,6 @@
-package cn.blockmc.Zao_hon.Listener;
+package cn.blockmc.Zao_hon.listener;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -22,7 +23,7 @@ public class ParticleGenerator implements Runnable {
 //	private static final double PI8 = PI / 8;
 	private static final double PI180 = PI / 180;
 	private static final Color COLOR = Color.fromRGB(0, 191, 255);
-	private static final Particle.DustOptions OPTION = new Particle.DustOptions(COLOR, 0.25f);
+	private static final Particle.DustOptions OPTION = new Particle.DustOptions(COLOR, 0.24f);
 	private static final float SCALE = 1.7f;
 	private double i = 0;
 
@@ -80,8 +81,6 @@ public class ParticleGenerator implements Runnable {
 				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
 				player.spawnParticle(Particle.REDSTONE, xx2, yy2, zz2, 0, 0, 0, 0, 0, OPTION);
 			}
-			// world1.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0,
-			// 0, OPTION);
 			ij = i + PI2 + j;
 			xx1 = x1 + Math.sin(ij) / SCALE;
 			zz1 = z1 + Math.cos(ij) / SCALE;
@@ -93,8 +92,6 @@ public class ParticleGenerator implements Runnable {
 				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
 				player.spawnParticle(Particle.REDSTONE, xx2, yy2, zz2, 0, 0, 0, 0, 0, OPTION);
 			}
-			// world1.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0,
-			// 0, OPTION);
 			ij = i + PI + j;
 			xx1 = x1 + Math.sin(ij) / SCALE;
 			zz1 = z1 + Math.cos(ij) / SCALE;
@@ -105,8 +102,6 @@ public class ParticleGenerator implements Runnable {
 				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
 				player.spawnParticle(Particle.REDSTONE, xx2, yy2, zz2, 0, 0, 0, 0, 0, OPTION);
 			}
-			// world1.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0,
-			// 0, OPTION);
 			ij = i + PI / 2 * 3 + j;
 			xx1 = x1 + Math.sin(ij) / SCALE;
 			zz1 = z1 + Math.cos(ij) / SCALE;
@@ -121,63 +116,6 @@ public class ParticleGenerator implements Runnable {
 			// world1.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0,
 			// 0, OPTION);
 		}
-
-		// for (double j = 0; j <= TPI; j = j + PI180) {
-		// double xx = x1 + Math.sin(j) / SCALE;
-		// double yy = y1;
-		// double zz = z1 + Math.cos(j) / SCALE;
-		// // world.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0, 0,
-		// // OPTION);
-		// for(Player player:portal.getNearbyPlayers()){
-		// player.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0, 0,
-		// OPTION);
-		// }
-		//
-		// }
-		// for (double j = 0, k = 0; j <= PI2 * 4 / 3; j = j + PI / 180 * 4 / 3
-		// * 3 / 8, k++) {
-		// double xx;
-		// double yy;
-		// double zz;
-		// double ij;
-		// ij = i + j;
-		// xx = x2 + Math.sin(ij) / SCALE;
-		// yy = y2 + k / 45 * 3 / 8;
-		// zz = z2 + Math.cos(ij) / SCALE;
-		// for(Player player:portal.getNearbyPlayers()){
-		// player.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0, 0,
-		// OPTION);
-		// }
-		//// world1.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0, 0,
-		// OPTION);
-		// ij = i + PI2 + j;
-		// xx = x2 + Math.sin(ij) / SCALE;
-		// zz = z2 + Math.cos(ij) / SCALE;
-		// for(Player player:portal.getNearbyPlayers()){
-		// player.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0, 0,
-		// OPTION);
-		// }
-		//// world1.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0, 0,
-		// OPTION);
-		// ij = i + PI + j;
-		// xx = x2 + Math.sin(ij) / SCALE;
-		// zz = z2 + Math.cos(ij) / SCALE;
-		// for(Player player:portal.getNearbyPlayers()){
-		// player.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0, 0,
-		// OPTION);
-		// }
-		//// world1.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0, 0,
-		// OPTION);
-		// ij = i + PI / 2 * 3 + j;
-		// xx = x2 + Math.sin(ij) / SCALE;
-		// zz = z2 + Math.cos(ij) / SCALE;
-		// for(Player player:portal.getNearbyPlayers()){
-		// player.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0, 0,
-		// OPTION);
-		// }
-		//// world1.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0, 0,
-		// OPTION);
-		// }
 		i = i + PI180 * 20;
 	}
 }

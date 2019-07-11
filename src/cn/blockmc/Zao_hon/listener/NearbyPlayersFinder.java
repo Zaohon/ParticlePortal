@@ -1,4 +1,4 @@
-package cn.blockmc.Zao_hon.Listener;
+package cn.blockmc.Zao_hon.listener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -28,7 +28,7 @@ public class NearbyPlayersFinder implements Runnable{
 	public boolean isNearby(Player player){
 		Location ploc = player.getLocation();
 		World world = ploc.getWorld();
-		if(world.equals(loc1.getWorld())||world.equals(loc2.getWorld())){
+		if(world.getName().equals(loc1.getWorld().getName())||world.getName().equals(loc2.getWorld().getName())){
 			if(ploc.distance(loc1)<=5||ploc.distance(loc2)<=5){
 				return true;
 			}

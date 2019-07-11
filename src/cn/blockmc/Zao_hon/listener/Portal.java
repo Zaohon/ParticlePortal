@@ -1,4 +1,4 @@
-package cn.blockmc.Zao_hon.Listener;
+package cn.blockmc.Zao_hon.listener;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,15 +26,11 @@ public class Portal {
 		listener = new PortalListener(this);
 		plugin.getServer().getPluginManager().registerEvents(listener, plugin);
 		
-
-		particleTask = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
-				new ParticleGenerator(this), 200, 5);
+		startParticle();
 		nearbyPlayers = new HashSet<Player>();
 		
-		NearbyPlayersFinder particleCloser = new NearbyPlayersFinder(this);
-		findTask = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,particleCloser, 0, 20);
-		
-		plugin.PR("f");
+		NearbyPlayersFinder narybyPlayerFinder = new NearbyPlayersFinder(this);
+		findTask = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,narybyPlayerFinder, 0, 20);
 		
 	}
 
@@ -53,5 +49,13 @@ public class Portal {
 		HandlerList.unregisterAll(listener);
 		findTask.cancel();
 		particleTask.cancel();
+	}
+	public void startParticle(){
+		stopParticle();
+		particleTask=  plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin,
+				new ParticleGenerator(this), 200, 5);
+	}
+	public void stopParticle(){
+		if(particleTask!=null&&!particleTask.isCancelled())particleTask.cancel();
 	}
 }

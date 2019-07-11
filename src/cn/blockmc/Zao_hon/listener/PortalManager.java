@@ -1,4 +1,4 @@
-package cn.blockmc.Zao_hon.Listener;
+package cn.blockmc.Zao_hon.listener;
 
 import java.util.HashMap;
 
@@ -11,7 +11,7 @@ public class PortalManager {
 
 	public PortalManager() {
 		plugin = ParticlePortal.getInstance();
-		loadPortals();
+		plugin.getServer().getScheduler().runTaskLater(plugin, ()->{loadPortals();}, 20l);
 	}
 
 	public void addPortal(String name, Portal portal) {
