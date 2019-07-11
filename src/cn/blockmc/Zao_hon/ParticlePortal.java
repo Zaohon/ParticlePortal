@@ -2,13 +2,13 @@ package cn.blockmc.Zao_hon;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import cn.blockmc.Zao_hon.Listener.PortalManager;
 import cn.blockmc.Zao_hon.commands.CommandDispatcher;
 import cn.blockmc.Zao_hon.commands.CreateCommand;
 import cn.blockmc.Zao_hon.commands.ListCommand;
 import cn.blockmc.Zao_hon.commands.RemoveCommand;
 import cn.blockmc.Zao_hon.commands.SetCommand;
 import cn.blockmc.Zao_hon.creator.PortalCacheManager;
+import cn.blockmc.Zao_hon.listener.PortalManager;
 import cn.blockmc.Zao_hon.storage.Sqlite;
 
 public class ParticlePortal extends JavaPlugin {
@@ -33,8 +33,8 @@ public class ParticlePortal extends JavaPlugin {
 		commanddispatcher.registerCommand(new RemoveCommand());
 
 		portalcachemanager = new PortalCacheManager();
-
 		portalmanager = new PortalManager();
+		
 
 	}
 
