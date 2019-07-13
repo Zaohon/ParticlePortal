@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,8 +22,8 @@ public class CommandDispatcher implements CommandExecutor, TabCompleter {
 	private String mRootCommandName;
 	private String mRootCommandDescription;
 
-	public CommandDispatcher(String commandName, String description) {
-		this.plugin = ParticlePortal.getInstance();
+	public CommandDispatcher(ParticlePortal plugin,String commandName, String description) {
+		this.plugin = plugin;
 
 		mRootCommandName = commandName;
 		mRootCommandDescription = description;

@@ -9,8 +9,8 @@ public class PortalManager {
 
 	private HashMap<String, Portal> portals;
 
-	public PortalManager() {
-		plugin = ParticlePortal.getInstance();
+	public PortalManager(ParticlePortal plugin) {
+		this.plugin = plugin;;
 		plugin.getServer().getScheduler().runTaskLater(plugin, ()->{loadPortals();}, 20l);
 	}
 
@@ -42,6 +42,9 @@ public class PortalManager {
 
 	public void savePortal(Portal portal) {
 		plugin.getSqlite().insertPortal(portal);
+	}
+	public ParticlePortal getPlugin(){
+		return plugin;
 	}
 
 }

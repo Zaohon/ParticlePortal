@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import cn.blockmc.Zao_hon.commands.CommandDispatcher;
 import cn.blockmc.Zao_hon.commands.CreateCommand;
 import cn.blockmc.Zao_hon.commands.ListCommand;
+import cn.blockmc.Zao_hon.commands.ParticleCommand;
 import cn.blockmc.Zao_hon.commands.RemoveCommand;
 import cn.blockmc.Zao_hon.commands.SetCommand;
 import cn.blockmc.Zao_hon.creator.PortalCacheManager;
@@ -20,20 +21,21 @@ public class ParticlePortal extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		instance = this;
+//		instance = this;
 		saveDefaultConfig();
-		sqlite = new Sqlite();
+		sqlite = new Sqlite(this);
 
-		commanddispatcher = new CommandDispatcher("ParticlePortal", "particleportal");
+		commanddispatcher = new CommandDispatcher(this,"ParticlePortal", "particleportal");
 		getCommand("ParticlePortal").setExecutor(commanddispatcher);
 		getCommand("ParticlePortal").setTabCompleter(commanddispatcher);
 		commanddispatcher.registerCommand(new CreateCommand(this));
 		commanddispatcher.registerCommand(new SetCommand(this));
 		commanddispatcher.registerCommand(new ListCommand(this));
 		commanddispatcher.registerCommand(new RemoveCommand(this));
+		commanddispatcher.registerCommand(new ParticleCommand(this));
 
 		portalcachemanager = new PortalCacheManager();
-		portalmanager = new PortalManager();
+		portalmanager = new PortalManager(this);
 		
 
 	}
@@ -53,11 +55,11 @@ public class ParticlePortal extends JavaPlugin {
 	public void PR(String str) {
 		this.getLogger().info(str);
 	}
-
-	private static ParticlePortal instance;
-
-	public static ParticlePortal getInstance() {
-		return instance;
-	}
+//
+//	private static ParticlePortal instance;
+//
+//	public static ParticlePortal getInstance() {
+//		return instance;
+//	}
 
 }

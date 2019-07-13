@@ -1,17 +1,11 @@
 package cn.blockmc.Zao_hon.creator;
 
 import java.util.HashMap;
-import java.util.Set;
 import java.util.UUID;
-
-import org.bukkit.Location;
-
-import cn.blockmc.Zao_hon.ParticlePortal;
 
 public class PortalCacheManager {
 	private HashMap<UUID,PortalCache> portalcaches;
 	public PortalCacheManager(){
-		ParticlePortal.getInstance();
 		 portalcaches = new HashMap<UUID,PortalCache>();
 	}
 	public boolean containCache(UUID uuid){

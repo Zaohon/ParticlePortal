@@ -16,8 +16,8 @@ public class Sqlite {
 	private final String path;
 	private ParticlePortal plugin;
 
-	public Sqlite() {
-		this.plugin = ParticlePortal.getInstance();
+	public Sqlite(ParticlePortal plugin) {
+		this.plugin = plugin;
 		try {
 			Class.forName("org.sqlite.JDBC");
 		} catch (ClassNotFoundException e) {
@@ -114,7 +114,7 @@ public class Sqlite {
 						rs.getDouble(4), rs.getDouble(5), rs.getFloat(6), rs.getFloat(7));
 				Location loc2 = new Location(plugin.getServer().getWorld(rs.getString(8)), rs.getDouble(9),
 						rs.getDouble(10), rs.getDouble(11), rs.getFloat(12), rs.getFloat(13));
-				Portal portal = new Portal(name, new Location[] { loc1, loc2 });
+				Portal portal = new Portal(plugin.getPortalManager(),name, new Location[] { loc1, loc2 });
 				portals.put(name,portal);
 			}
 		} catch (SQLException e) {

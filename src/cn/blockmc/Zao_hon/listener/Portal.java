@@ -19,8 +19,8 @@ public class Portal {
 	private BukkitTask findTask;
 	private Set<Player> nearbyPlayers;
 
-	public Portal(String name, Location[] locs) {
-		this.plugin = ParticlePortal.getInstance();
+	public Portal(PortalManager manager,String name, Location[] locs) {
+		this.plugin = manager.getPlugin();
 		this.name = name;
 		this.locs = locs;
 		listener = new PortalListener(this);
