@@ -11,8 +11,8 @@ import cn.blockmc.Zao_hon.creator.PortalCacheManager;
 public class CreateCommand implements ICommand {
 	private ParticlePortal plugin;
 
-	public CreateCommand() {
-		this.plugin = ParticlePortal.getInstance();
+	public CreateCommand(ParticlePortal plugin) {
+		this.plugin =plugin;
 	}
 
 	@Override
@@ -32,12 +32,11 @@ public class CreateCommand implements ICommand {
 
 	@Override
 	public String[] getUsageString(String label, CommandSender sender) {
-		return new String[] { "§bcreate §dname §8--创建一个粒子传送门" };
+		return new String[] { "§b/pp create §dname §b创建一个名为§dname§b的传送门" };
 	}
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
 		return "创建一个粒子传送门";
 	}
 

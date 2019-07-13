@@ -96,19 +96,8 @@ public class CommandDispatcher implements CommandExecutor, TabCompleter {
 
 		if (!com.onCommand(sender, subCommand, subArgs)) {
 			String[] lines = com.getUsageString(subCommand, sender);
-			String usageString = "";
-
-			for (String line : lines) {
-				if (lines.length > 1)
-					usageString += "\n    ";
-
-				usageString += ChatColor.GRAY + "/" + label + " " + line;
-			}
-
-			// usageString = ChatColor.RED
-			// + plugin.getMessages().getString("bagofgold.commands.base.usage",
-			// "usage", usageString);
-			// plugin.getMessages().senderSendMessage(sender, usageString);
+			sender.sendMessage("语法错误");
+			sender.sendMessage(lines);
 		}
 
 		return true;
@@ -138,9 +127,18 @@ public class CommandDispatcher implements CommandExecutor, TabCompleter {
 		String usage = "";
 
 		if (subcommand != null) {
-
+			sender.sendMessage("----ParticlePortal----");
+			sender.sendMessage("指令错误:"+subcommand);
+			for(ICommand command:mCommands.values()) {
+				sender.sendMessage("§b/"+mRootCommandName+" §d"+command.getName()+" §8--"+command.getDescription());
+			}
+		
 		} else {
-
+			sender.sendMessage("----ParticlePortal----");
+			sender.sendMessage("缺少参数");
+			for(ICommand command:mCommands.values()) {
+				sender.sendMessage("§b/"+mRootCommandName+" §d"+command.getName()+" §8--"+command.getDescription());
+			}
 		}
 
 	}
@@ -198,19 +196,9 @@ public class CommandDispatcher implements CommandExecutor, TabCompleter {
 
 				if (command.getPermission() != null && !sender.hasPermission(command.getPermission()))
 					continue;
-
-				String usageString = "";
-				boolean first = true;
-				for (String line : command.getUsageString(command.getName(), sender)) {
-					if (!first)
-						usageString += "\n";
-
-					first = false;
-
-					usageString += ChatColor.GOLD + "/" + mRootCommandName + " " + line;
-				}
-
-				sender.sendMessage(usageString);
+				
+				
+				sender.sendMessage("§b/"+mRootCommandName+" §d"+command.getName()+" §8--"+command.getDescription());
 			}
 			return true;
 		}

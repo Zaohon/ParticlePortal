@@ -11,8 +11,8 @@ import cn.blockmc.Zao_hon.listener.PortalManager;
 public class RemoveCommand implements ICommand {
 	private ParticlePortal plugin;
 
-	public RemoveCommand() {
-		this.plugin = ParticlePortal.getInstance();
+	public RemoveCommand(ParticlePortal plugin) {
+		this.plugin = plugin;
 	}
 
 	@Override
@@ -32,12 +32,12 @@ public class RemoveCommand implements ICommand {
 
 	@Override
 	public String[] getUsageString(String label, CommandSender sender) {
-		return new String[] { "§bremove §dname §8--删除一个粒子传送门" };
+		return new String[] { "§b/sc remove §dname §b删除名为§dname§b的传送门" };
 	}
 
 	@Override
 	public String getDescription() {
-		return null;
+		return "删除一个粒子传送门";
 	}
 
 	@Override

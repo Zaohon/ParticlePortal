@@ -15,8 +15,8 @@ import cn.blockmc.Zao_hon.listener.PortalManager;
 public class SetCommand implements ICommand {
 	private ParticlePortal plugin;
 
-	public SetCommand() {
-		this.plugin = ParticlePortal.getInstance();
+	public SetCommand(ParticlePortal plugin) {
+		this.plugin = plugin;
 	}
 
 	@Override
@@ -36,12 +36,12 @@ public class SetCommand implements ICommand {
 
 	@Override
 	public String[] getUsageString(String label, CommandSender sender) {
-		return new String[] { "§bset §8--设置粒子传送门的坐标点" };
+		return null;
 	}
 
 	@Override
 	public String getDescription() {
-		return "§bset §8--设置粒子传送门的坐标点";
+		return "设置粒子传送门的坐标点";
 	}
 
 	@Override

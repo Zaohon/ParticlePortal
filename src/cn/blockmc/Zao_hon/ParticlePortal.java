@@ -27,10 +27,10 @@ public class ParticlePortal extends JavaPlugin {
 		commanddispatcher = new CommandDispatcher("ParticlePortal", "particleportal");
 		getCommand("ParticlePortal").setExecutor(commanddispatcher);
 		getCommand("ParticlePortal").setTabCompleter(commanddispatcher);
-		commanddispatcher.registerCommand(new CreateCommand());
-		commanddispatcher.registerCommand(new SetCommand());
-		commanddispatcher.registerCommand(new ListCommand());
-		commanddispatcher.registerCommand(new RemoveCommand());
+		commanddispatcher.registerCommand(new CreateCommand(this));
+		commanddispatcher.registerCommand(new SetCommand(this));
+		commanddispatcher.registerCommand(new ListCommand(this));
+		commanddispatcher.registerCommand(new RemoveCommand(this));
 
 		portalcachemanager = new PortalCacheManager();
 		portalmanager = new PortalManager();
