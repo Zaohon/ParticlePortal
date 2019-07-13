@@ -33,7 +33,7 @@ public class ParticleCommand implements ICommand {
 
 	@Override
 	public String[] getUsageString(String label, CommandSender sender) {
-		return new String[] { "§b/pp portal §dstart§9/§dstop name" };
+		return new String[] { "§b/pp particle §dstart§9/§dstop name" };
 	}
 
 	@Override
@@ -59,14 +59,14 @@ public class ParticleCommand implements ICommand {
 		}
 		String subcmd = args[0];
 		PortalManager pmanager = plugin.getPortalManager();
-		if (subcmd.equalsIgnoreCase("start") && subcmd.equalsIgnoreCase("stop")) {
+		if (!subcmd.equalsIgnoreCase("start") && !subcmd.equalsIgnoreCase("stop")) {
 			sender.sendMessage("参数错误:" + subcmd);
-			sender.sendMessage("正确用法:/pp portal start 或/pp portal stop");
+			sender.sendMessage("正确用法:/pp particle start 或/pp portal stop");
 			return true;
 		}
 		if (lenth < 2) {
 			sender.sendMessage("缺少参数:§dname");
-			sender.sendMessage("正确用法:/pp portal " + subcmd + " §dname");
+			sender.sendMessage("正确用法:/pp particle " + subcmd + " §dname");
 			return true;
 		}
 		String portalname = args[1];
