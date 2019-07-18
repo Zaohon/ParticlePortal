@@ -80,17 +80,17 @@ public class ParticleGenerator implements Runnable {
 				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
 				player.spawnParticle(Particle.REDSTONE, xx2, yy2, zz2, 0, 0, 0, 0, 0, OPTION);
 			}
-			ij = i + PI2 + j;
-			xx1 = x1 + Math.sin(ij) / SCALE;
-			zz1 = z1 + Math.cos(ij) / SCALE;
-
-			xx2 = x2 + Math.sin(ij) / SCALE;
-			zz2 = z2 + Math.cos(ij) / SCALE;
-
-			for (Player player : portal.getNearbyPlayers()) {
-				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
-				player.spawnParticle(Particle.REDSTONE, xx2, yy2, zz2, 0, 0, 0, 0, 0, OPTION);
-			}
+//			ij = i + PI2 + j;
+//			xx1 = x1 + Math.sin(ij) / SCALE;
+//			zz1 = z1 + Math.cos(ij) / SCALE;
+//
+//			xx2 = x2 + Math.sin(ij) / SCALE;
+//			zz2 = z2 + Math.cos(ij) / SCALE;
+//
+//			for (Player player : portal.getNearbyPlayers()) {
+//				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
+//				player.spawnParticle(Particle.REDSTONE, xx2, yy2, zz2, 0, 0, 0, 0, 0, OPTION);
+//			}
 			ij = i + PI + j;
 			xx1 = x1 + Math.sin(ij) / SCALE;
 			zz1 = z1 + Math.cos(ij) / SCALE;
@@ -101,19 +101,17 @@ public class ParticleGenerator implements Runnable {
 				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
 				player.spawnParticle(Particle.REDSTONE, xx2, yy2, zz2, 0, 0, 0, 0, 0, OPTION);
 			}
-			ij = i + PI / 2 * 3 + j;
-			xx1 = x1 + Math.sin(ij) / SCALE;
-			zz1 = z1 + Math.cos(ij) / SCALE;
-
-			xx2 = x2 + Math.sin(ij) / SCALE;
-			zz2 = z2 + Math.cos(ij) / SCALE;
-
-			for (Player player : portal.getNearbyPlayers()) {
-				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
-				player.spawnParticle(Particle.REDSTONE, xx2, yy2, zz2, 0, 0, 0, 0, 0, OPTION);
-			}
-			// world1.spawnParticle(Particle.REDSTONE, xx, yy, zz, 0, 0, 0, 0,
-			// 0, OPTION);
+//			ij = i + PI / 2 * 3 + j;
+//			xx1 = x1 + Math.sin(ij) / SCALE;
+//			zz1 = z1 + Math.cos(ij) / SCALE;
+//
+//			xx2 = x2 + Math.sin(ij) / SCALE;
+//			zz2 = z2 + Math.cos(ij) / SCALE;
+//
+//			for (Player player : portal.getNearbyPlayers()) {
+//				player.spawnParticle(Particle.REDSTONE, xx1, yy1, zz1, 0, 0, 0, 0, 0, OPTION);
+//				player.spawnParticle(Particle.REDSTONE, xx2, yy2, zz2, 0, 0, 0, 0, 0, OPTION);
+//			}
 		}
 		i = i + PI180 * 20;
 	}
