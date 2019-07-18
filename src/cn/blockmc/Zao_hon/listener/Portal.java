@@ -1,6 +1,5 @@
 package cn.blockmc.Zao_hon.listener;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.bukkit.Location;
@@ -21,6 +20,7 @@ public class Portal {
 	private ConcurrentSet<Player> nearbyPlayers;
 
 	public Portal(PortalManager manager,String name, Location[] locs) {
+			
 		this.plugin = manager.getPlugin();
 		this.name = name;
 		this.locs = locs;
